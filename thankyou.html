@@ -1,72 +1,33 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Thank You!</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      color: #333;
-    }
-
-    .thankyou-container {
-      background: white;
-      padding: 40px 60px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      text-align: center;
-      max-width: 400px;
-      line-height: 1.6; /* spacing between lines */
-      animation: fadeIn 1s ease forwards;
-    }
-
-    .thankyou-container h1 {
-      color: #4caf50;
-      margin-bottom: 20px;
-    }
-
-    .thankyou-container p {
-      font-size: 1.1em;
-      margin-bottom: 30px;
-    }
-
-    .thankyou-container a {
-      text-decoration: none;
-      background: #4caf50;
-      color: white;
-      padding: 12px 30px;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: background 0.3s ease;
-      display: inline-block;
-    }
-
-    .thankyou-container a:hover {
-      background: #43a047;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-  </style>
+	<title>Thank You - Anurag Hiware</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			text-align: center;
+		}
+		.success-message {
+			padding: 2rem;
+			background: #fff;
+			border-radius: 5px;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
+	</style>
 </head>
 <body class="is-preload">
-  <div id="wrapper">
-    <section class="thankyou-container">
-      <h1>Thank You!</h1>
-      <p>Your message has been successfully sent. I'll get back to you soon.</p>
-      <a href="index.html">Return to Home</a>
-    </section>
-  </div>
+	<div class="success-message">
+		<h2>Thank You! ✅</h2>
+		<p>Your message has been sent successfully.</p>
+		<p>I'll get back to you as soon as possible.</p>
+		<br>
+		<a href="index.html" class="button primary">Return to Portfolio</a>
+	</div>
 </body>
 </html>

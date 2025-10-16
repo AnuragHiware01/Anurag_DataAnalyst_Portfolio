@@ -166,14 +166,6 @@
     });
   }
 
-  // ----- Contact Form Redirect -----
-  const $form = $("form");
-  $form.on("submit", function (e) {
-    e.preventDefault();
-    // Simulate sending...
-    setTimeout(() => {
-      window.location.href = "thankyou.html";
-    }, 500);
-  });
+  // REMOVED ALL CONTACT FORM JAVASCRIPT - Using EmailJS instead
 
 })(jQuery);

@@ -11,6 +11,119 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+	<style>
+		/* Custom Button Styles */
+		.view-project-btn {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border: none;
+			color: white;
+			padding: 15px 35px;
+			font-size: 1.1em;
+			font-weight: 600;
+			border-radius: 50px;
+			text-decoration: none;
+			display: inline-block;
+			transition: all 0.4s ease;
+			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+			position: relative;
+			overflow: hidden;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		.view-project-btn:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+			color: white;
+			background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+		}
+
+		.view-project-btn:active {
+			transform: translateY(-1px);
+			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+		}
+
+		.view-project-btn::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+			transition: left 0.5s;
+		}
+
+		.view-project-btn:hover::before {
+			left: 100%;
+		}
+
+		/* Project card enhancements */
+		.post.featured {
+			background: #ffffff;
+			border-radius: 15px;
+			padding: 40px;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			border: 1px solid #e0e0e0;
+		}
+
+		.post.featured:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+		}
+
+		/* Image enhancements */
+		.image.main img {
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+			transition: transform 0.3s ease;
+		}
+
+		.image.main img:hover {
+			transform: scale(1.02);
+		}
+
+		/* Header enhancements */
+		.post.featured header.major {
+			margin-bottom: 30px;
+		}
+
+		.post.featured header.major h2 {
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			font-size: 2.5em;
+			margin-bottom: 15px;
+		}
+
+		.post.featured header.major .date {
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			color: white;
+			padding: 5px 15px;
+			border-radius: 20px;
+			font-weight: 600;
+		}
+
+		/* Success message styling */
+		#form-message {
+			font-weight: 500;
+			text-align: center;
+			font-size: 1.1em;
+			transition: all 0.3s ease;
+		}
+
+		/* Social icons enhancement */
+		.icons.alt a {
+			transition: transform 0.3s ease;
+		}
+
+		.icons.alt a:hover {
+			transform: translateY(-3px);
+		}
+	</style>
 </head>
 <body class="is-preload">
 
@@ -22,8 +135,8 @@
 			<h1>My Data<br />Analyst Portfolio</h1>
 			<p>Hello, and welcome to my Data Analyst Portfolio. I'm <strong>Anurag Hiware</strong>, 
 			a passionate Data Analyst with 8 months of experience at Blucognition Pvt. Ltd. 
-			I’ve completed my BCA and MCA degrees and developed strong analytical skills using tools like Excel, SQL, Power BI, and Python. 
-			Here, you’ll find my projects that showcase my ability to analyze, visualize, and derive insights from data. 
+			I've completed my BCA and MCA degrees and developed strong analytical skills using tools like Excel, SQL, Power BI, and Python. 
+			Here, you'll find my projects that showcase my ability to analyze, visualize, and derive insights from data. 
 			Thanks for visiting!</p>
 		</div>
 
@@ -51,7 +164,7 @@
 				<header class="major">
 					<span class="date">October 15, 2025</span>
 					<h2>Interactive Dashboard Reports</h2>
-					<p>In this project, I performed data cleaning, processing, analysis, and dashboard creation of store data in Excel.</p>
+					<p>In this project, I performed data cleaning, processing, analysis, and dashboard creation of store data in Excel. The dashboard provides comprehensive insights into sales performance, customer behavior, and inventory management.</p>
 				</header>
 				<div class="image main">
 					<img src="images/1.png" alt="Dashboard Screenshot 1" /><br/><br/>
@@ -60,8 +173,12 @@
 					<img src="images/4.png" alt="Dashboard Screenshot 4" />
 				</div>
 				<ul class="actions special">
-					<li><a href="https://github.com/AnuragHiware01/Vendor-Performance-Analysis" class="button large">View Project</a></li>
+					<li><a href="https://github.com/AnuragHiware01/Vendor-Performance-Analysis" class="view-project-btn" target="_blank">
+						🚀 View Project on GitHub
+					</a></li>
 				</ul>
+				
+					
 			</article>
 
 		</div>
@@ -73,11 +190,11 @@
 					<div class="fields">
 						<div class="field">
 							<label for="name">Name</label>
-							<input type="text" name="name" id="name" placeholder="Your Name" required />
+							<input type="text" name="from_name" id="name" placeholder="Your Name" required />
 						</div>
 						<div class="field">
 							<label for="email">Email</label>
-							<input type="email" name="email" id="email" placeholder="Your Email" required />
+							<input type="email" name="from_email" id="email" placeholder="Your Email" required />
 						</div>
 						<div class="field">
 							<label for="message">Message</label>
@@ -85,9 +202,10 @@
 						</div>
 					</div>
 					<ul class="actions">
-						<li><input type="submit" value="Send Message" class="primary" /></li>
+						<li><input type="submit" value="Send Message" class="primary" id="submit-btn" /></li>
 						<li><input type="reset" value="Reset" /></li>
 					</ul>
+					<div id="form-message" style="display: none; margin-top: 20px; padding: 10px; border-radius: 5px;"></div>
 				</form>
 			</section>
 
@@ -131,12 +249,66 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
-	<!-- Contact Form Script -->
-	<script>
-		document.getElementById('contact-form').addEventListener('submit', function(e) {
-			e.preventDefault(); // prevent default POST
-			window.location.href = 'thankyou.html'; // redirect to thank you page
-		});
+	<!-- EmailJS Initialization -->
+	<script type="text/javascript">
+		(function() {
+			// =============================================
+			// REPLACE THESE VALUES WITH YOUR ACTUAL EMAILJS KEYS
+			// =============================================
+			
+			// 1. PUBLIC KEY - Get from EmailJS Dashboard → API Keys
+			const PUBLIC_KEY = "EnDfK2yEWHsKD3Tm1"; // Looks like: user_AbC123XyZ456
+			
+			// 2. SERVICE ID - Get from EmailJS Dashboard → Email Services → Click your service
+			const SERVICE_ID = "service_9ti9hqo"; // Looks like: service_abc123xyz
+			
+			// 3. TEMPLATE ID - Get from EmailJS Dashboard → Email Templates → Click your template
+			const TEMPLATE_ID = "template_di0rh3w"; // Looks like: template_abcdef123
+			
+		
+			// Initialize EmailJS with your Public Key
+			emailjs.init(PUBLIC_KEY);
+			
+			// Form submission handler
+			document.getElementById('contact-form').addEventListener('submit', function(event) {
+				event.preventDefault();
+				
+				const submitBtn = document.getElementById('submit-btn');
+				const messageDiv = document.getElementById('form-message');
+				const originalText = submitBtn.value;
+				
+				// Show loading state
+				submitBtn.value = 'Sending...';
+				submitBtn.disabled = true;
+				messageDiv.style.display = 'none';
+				
+				// Send email using EmailJS
+				emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this)
+					.then(function(response) {
+						console.log('SUCCESS!', response.status, response.text);
+						messageDiv.style.display = 'block';
+						messageDiv.style.backgroundColor = '#d4edda';
+						messageDiv.style.color = '#155724';
+						messageDiv.style.border = '1px solid #c3e6cb';
+						messageDiv.innerHTML = '✅ Message sent successfully! I\'ll get back to you soon.';
+						
+						// Reset form
+						document.getElementById('contact-form').reset();
+					}, function(error) {
+						console.log('FAILED...', error);
+						messageDiv.style.display = 'block';
+						messageDiv.style.backgroundColor = '#f8d7da';
+						messageDiv.style.color = '#721c24';
+						messageDiv.style.border = '1px solid #f5c6cb';
+						messageDiv.innerHTML = '❌ Failed to send message. Please try again or email me directly at anuraghivare555@gmail.com';
+					})
+					.finally(function() {
+						// Reset button state
+						submitBtn.value = originalText;
+						submitBtn.disabled = false;
+					});
+			});
+		})();
 	</script>
 
 </body>

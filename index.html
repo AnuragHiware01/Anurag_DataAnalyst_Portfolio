@@ -123,6 +123,129 @@
 		.icons.alt a:hover {
 			transform: translateY(-3px);
 		}
+
+		/* Popup Styles */
+		.popup-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 1000;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease;
+		}
+		
+		.popup-overlay.active {
+			opacity: 1;
+			visibility: visible;
+		}
+		
+		.popup-content {
+			background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+			border-radius: 15px;
+			padding: 30px;
+			width: 90%;
+			max-width: 500px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+			transform: scale(0.9);
+			transition: transform 0.3s ease;
+		}
+		
+		.popup-overlay.active .popup-content {
+			transform: scale(1);
+		}
+		
+		.popup-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 25px;
+		}
+		
+		.popup-title {
+			font-size: 1.5rem;
+			color: #4cc9f0;
+		}
+		
+		.close-btn {
+			background: none;
+			border: none;
+			color: #b8c1ec;
+			font-size: 1.5rem;
+			cursor: pointer;
+			transition: color 0.3s ease;
+		}
+		
+		.close-btn:hover {
+			color: #f72585;
+		}
+		
+		.project-options {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+		
+		.project-option {
+			display: flex;
+			align-items: center;
+			padding: 15px;
+			background: rgba(255, 255, 255, 0.1);
+			border-radius: 10px;
+			transition: all 0.3s ease;
+			cursor: pointer;
+			text-decoration: none;
+			color: inherit;
+		}
+		
+		.project-option:hover {
+			background: rgba(255, 255, 255, 0.2);
+			transform: translateX(5px);
+		}
+		
+		.project-icon {
+			width: 40px;
+			height: 40px;
+			background: linear-gradient(45deg, #f72585, #b5179e);
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-right: 15px;
+			font-size: 1.2rem;
+		}
+		
+		.project-details {
+			text-align: left;
+			flex: 1;
+		}
+		
+		.project-name {
+			font-weight: 600;
+			margin-bottom: 5px;
+			color: #fff;
+		}
+		
+		.project-description {
+			font-size: 0.9rem;
+			color: #b8c1ec;
+		}
+		
+		.project-link {
+			color: #4cc9f0;
+			font-size: 1.2rem;
+			transition: color 0.3s ease;
+		}
+		
+		.project-option:hover .project-link {
+			color: #f72585;
+		}
 	</style>
 </head>
 <body class="is-preload">
@@ -173,12 +296,10 @@
 					<img src="images/4.png" alt="Dashboard Screenshot 4" />
 				</div>
 				<ul class="actions special">
-					<li><a href="https://github.com/AnuragHiware01/Vendor-Performance-Analysis" class="view-project-btn" target="_blank">
+					<li><a href="#" class="view-project-btn" id="openPopupBtn">
 						🚀 View Project on GitHub
 					</a></li>
 				</ul>
-				
-					
 			</article>
 
 		</div>
@@ -228,6 +349,7 @@
 					<ul class="icons alt">
 						<li><a href="https://www.linkedin.com/in/anurag-hiware-inlink/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
 						<li><a href="https://github.com/AnuragHiware01" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						
 					</ul>
 				</section>
 			</section>
@@ -238,6 +360,36 @@
 			<ul><li>Design: By Anurag Hiware</li></ul>
 		</div>
 
+	</div>
+
+	<!-- GitHub Project Popup -->
+	<div class="popup-overlay" id="popupOverlay">
+		<div class="popup-content">
+			<div class="popup-header">
+				<h2 class="popup-title">Select a Project</h2>
+				<button class="close-btn" id="closePopupBtn">&times;</button>
+			</div>
+			
+			<div class="project-options">
+				<a href="https://github.com/AnuragHiware01/Vendor-Performance-Analysis" class="project-option" target="_blank">
+					<div class="project-icon">📊</div>
+					<div class="project-details">
+						<div class="project-name">Vendor Performance Analysis</div>
+						
+					</div>
+					<div class="project-link">→</div>
+				</a>
+				
+				<a href="https://github.com/AnuragHiware01/Loan_Approval_Prediction_using_AI-ML" class="project-option" target="_blank">
+					<div class="project-icon">📈</div>
+					<div class="project-details">
+						<div class="project-name">Loan Approval Prediction using AI-ML</div>
+						
+					</div>
+					<div class="project-link">→</div>
+				</a>
+			</div>
+		</div>
 	</div>
 
 	<!-- Scripts -->
@@ -309,6 +461,40 @@
 					});
 			});
 		})();
+	</script>
+
+	<!-- Popup Script -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const openPopupBtn = document.getElementById('openPopupBtn');
+			const closePopupBtn = document.getElementById('closePopupBtn');
+			const popupOverlay = document.getElementById('popupOverlay');
+			
+			// Open popup
+			openPopupBtn.addEventListener('click', function(e) {
+				e.preventDefault();
+				popupOverlay.classList.add('active');
+			});
+			
+			// Close popup when clicking close button
+			closePopupBtn.addEventListener('click', function() {
+				popupOverlay.classList.remove('active');
+			});
+			
+			// Close popup when clicking outside the content
+			popupOverlay.addEventListener('click', function(e) {
+				if (e.target === popupOverlay) {
+					popupOverlay.classList.remove('active');
+				}
+			});
+			
+			// Close popup with Escape key
+			document.addEventListener('keydown', function(e) {
+				if (e.key === 'Escape') {
+					popupOverlay.classList.remove('active');
+				}
+			});
+		});
 	</script>
 
 </body>

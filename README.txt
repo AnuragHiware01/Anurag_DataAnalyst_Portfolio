@@ -1,6 +1,6 @@
 Anurag Hiware - Data Analyst Portfolio
 👨‍💻 About Me
-Hello! I'm Anurag Hiware, a passionate Data Analyst with 8 months of professional experience at Blucognition Pvt. Ltd. I hold BCA and MCA degrees and specialize in transforming raw data into meaningful insights that drive business decisions.
+Hello! I'm Anurag Hiware, a passionate Data Analyst with 1.5+ Years of professional experience at Blucognition Pvt. Ltd & Inteliment technologies pvt. ltd. I hold BCA and MCA degrees and specialize in transforming raw data into meaningful insights that drive business decisions.
 
 🛠️ Technical Skills
 Data Analysis: Excel, SQL, Python (Pandas, NumPy)
